@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const OptimizeCssAssetPlugin = require("optimize-css-assets-webpack-plugin")
 const TerserWebpackPlugin = require("terser-webpack-plugin")
-
+const autoprefixer = require('autoprefixer')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -25,25 +25,24 @@ const optimization = ()=>{
 } 
 
 module.exports = {
-	entry : "./src",
-	output : {
-		path : path.resolve(__dirname,'dist'),
-		filename : "bundle.js"
-	},
+  entry : "./src",
+  output : {
+    path : path.resolve(__dirname,'dist'),
+    filename : "bundle.js"
+  },
   optimization : optimization(),
-	devServer: {
+  devServer: {
       contentBase: path.join(__dirname, 'dist'),
-    	port: 8080,
-      hot : isDev
-  	},
-  	plugins: [
-  		new MiniCssExtractPlugin({
-  			filename : "style.css",
+      port: 8080,
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename : "style.css",
         options : {
            hmr : isDev,
            reloadAll: true
         }
-  		}),
+      }),
       new HtmlWebpackPlugin({
         template : "./src/index.html",
         minify: {
@@ -65,10 +64,11 @@ module.exports = {
               to : path.resolve(__dirname, 'dist/img')
             }
           ]
-        })
-  	],
-  	module: {
-    	rules: [
+        }),
+
+    ],
+    module: {
+      rules: [
           {
             test : /\.css$/,
             use : [MiniCssExtractPlugin.loader, "css-loader"]
@@ -77,14 +77,25 @@ module.exports = {
             test : /\.less$/,
             use : [
                     {
-                      loader: MiniCssExtractPlugin.loader,
+                      loader: MiniCssExtractPlugin.loader
                     },
 
                     {
-                      loader: 'css-loader',
+                      loader: 'css-loader'
                     },
                     {
-                      loader: 'less-loader',
+                      loader: 'postcss-loader',
+                      options: {
+                          plugins: [
+                              autoprefixer({
+                                  browsers:['ie >= 8', 'last 4 version']
+                              })
+                          ],
+                          sourceMap: true
+                      }
+                    },
+                    {
+                      loader: 'less-loader'
                     },
                   ]
           },
@@ -113,5 +124,5 @@ module.exports = {
             ]
           },
       ]
-  	},
+    },
 }
