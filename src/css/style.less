@@ -32,7 +32,6 @@ a{
 }
 
 #header{
-	position: relative;
 	padding-top: 34px;
 	.header__menu{
 		position: relative;
@@ -40,37 +39,37 @@ a{
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-			.menu__logo{
-				width: 135px;
-				height: 43px;
-				background: url(../img/header/logo.svg) 0 0/cover no-repeat;
-			}
+		.menu__logo{
+			width: 135px;
+			height: 43px;
+			background: url(../img/header/logo.svg) 0 0/cover no-repeat;
+		}
 
-			.menu__nav{
-				ul{
-					display: flex;
-					li{
-						margin-right: 60px;
-						&:last-child{
-							margin-right: 0;
-						}
-						a{
-							font-weight: 600;
-							font-size: 16px;
-						}
+		.menu__nav{
+			ul{
+				display: flex;
+				li{
+					margin-right: 60px;
+					&:last-child{
+						margin-right: 0;
+					}
+					a{
+						font-weight: 600;
+						font-size: 16px;
 					}
 				}
 			}
+		}
 
-			.menu__button{
-				padding: 12px 40px;
-				font-size: 14px;
-				font-weight: bold;
-				border: 2px solid #333333;
-				border-radius: 5px;
-				&:hover{
-					cursor: pointer;
-				}
+		.menu__button{
+			padding: 12px 40px;
+			font-size: 14px;
+			font-weight: bold;
+			border: 2px solid #333333;
+			border-radius: 5px;
+			&:hover{
+				cursor: pointer;
+					}
 			}
 	}
 
@@ -96,7 +95,7 @@ a{
 			top: calc(50% - 35px);
 			left: calc(50% - 25px);
 	    }
-	   &:after{
+	    &:after{
 	   		content: "=";
 			text-align: center;
 			width: 100%;
@@ -186,32 +185,7 @@ a{
 								 top 68%  left 55%,
 								 center;
 		}
-
-		@media (max-width: 1400px){
-			.content__block{
-				margin: 0;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				justify-content: center;
-			}
-
-			&{
-				flex-direction: column;
-				padding: 80px 0 80px 0;
-				
-			}
-			.content__img{
-				width: 100%;
-				height: 500px;
-				background: red;
-			}
-
-		
 	}
-}
-
-	//menu-adaptive
 
 	@media (max-width: 1350px) {
 		.adaptive-menu{
@@ -229,51 +203,70 @@ a{
 			margin-right: 25px;
 		}
 
-	.menu__logo{
-		order: 2;
-	}
+		.menu__logo{
+			order: 2;
+		}
 
-	.menu__button{
-		order: 3;
-	}
+		.menu__button{
+			order: 3;
+		}
 
-	.burger__logo{
-		display: block;
-		position: relative;
-		top: 0;
-		right: -60px;
-	}
-
-	.burger:hover, .burger:active{
-		.burger__nav{
+		.burger__logo{
 			display: block;
-			width: 250px;
-			border-radius: 5px;
-			background: #fff;
-			left: 0;
-			top: calc(100% + 1px);
-			z-index:100;
+			position: relative;
+			top: 0;
+			right: -60px;
+		}
+
+		.burger:hover, .burger:active{
+			.burger__nav{
+				display: block;
+				width: 250px;
+				border-radius: 5px;
+				background: #fff;
+				left: 0;
+				top: calc(100% + 1px);
+				z-index:100;
 			
-			li{
-				margin: 15px 0 15px 25px;
-				&:hover a{
-					background: #ccc;
-					color: #fff;
+				li{
+					margin: 15px 0 15px 25px;
+					&:hover a{
+						background: #ccc;
+						color: #fff;
+					}
 				}
 			}
+	    }
+	}
+
+	@media (max-width: 1400px){
+
+			.header__content{
+				flex-direction: column;
+				padding: 80px 0 80px 0;
+				align-items: center;
+				justify-content: center;
+
+				.content__block{
+					margin: 0;
+					text-align: center;
+				}
+
+				.content__img{
+					width: 500px;
+					height: 500px;
+					background: red;
+				}
+			}
+	}
+
+	@media (max-width: 510px) {
+		.menu__button{
+			display: none;
 		}
-	}
-	}
-
-
-}
-
-@media (max-width: 510px) {
-	.menu__button{
-		display: none;
-	}
-	.header__menu{
-		justify-content: flex-start;
+		.header__menu{
+			justify-content: flex-start;
+		}
 	}
 
 
@@ -501,7 +494,7 @@ a{
 			width: 100%;
 		}
 
-		p{
+		.what-we-do__titles__p{
 			font-weight: normal;
 			font-size: 18px;
 			line-height: 28px;
@@ -727,9 +720,12 @@ a{
 		}
 		.stack-items{
 			flex-direction: column;
+			width: 95%;
+			margin: 0 auto;
 			.stack-item{
 				margin-bottom: 15px;
-				background-size: 50%;
+				background-size: 35%;
+				width: 50%;
 				&:last-child{
 					margin-bottom: 50px;
 					background-size: 100%;
@@ -809,7 +805,6 @@ a{
 			}
 			.mobiApp{
 				background: url("../img/case/image 24.svg") 0 0/contain no-repeat;
-				margin-bottom: 100px;
 			}
 		}
 	}
